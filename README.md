@@ -13,7 +13,7 @@ LANMonitor is a project that allows you to detect the devices (computers, phones
 
 ## Installation
 
-1. Start by downloading the file from [here](https://github.com/samehb/LANMonitor/Binaries/LANMonitor.zip).
+1. Start by downloading the file from [here](https://github.com/samehb/LANMonitor/blob/master/Binaries/LANMonitor.zip?raw=true).
 2. Extract the .zip file from step 1 into any folder of choice.
 3. That is it. Start the program by executing LANMonitor.exe. Skip the last step if you are not a developer.
 4. If you are a developer and want to modify this project, make sure that the LANMonitor.db database file is inlcuded with LANMonitor.exe. I already added it at the debug path, so you can compile the project and start right away. I also added the database inside the Database folder to make it easier for you.
