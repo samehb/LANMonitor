@@ -30,6 +30,7 @@ LANMonitor is a project that allows you to detect the devices (computers, phones
 7. If for any reason you want to reset the list of entries and start fresh, nvaigate to Tools -> Clear Devices.
 8. When your ARP cache receives erroneous values, you will have to reset it by navigating to Tools -> Clear Interface.
 9. If you want to select a different network interface to monitor, navigate to Tools -> Settings. Inside it you will be able to select the network interface, scan refresh interval, and the number of devices to scan from the base ip (I will add a start address feature in the future). Do not change those values unless you know what you are doing.
+10. If you are using mutiple interfaces on the same network, disable all but one (to prevent inaccurate data) then restart the program.
 
 ## Limitations
 There is a limitation when it comes to LANMonitor. It is actually hardware related. In some network setups you will not be able to detect hostnames. I will not discuss this issue here. Though, If you must, you can create your own DNS server to overcome this limitation. If you do not have much IT experience, you can go ahead and use the Interface Vendor column to identify the device, then add a name to its Description. After that, the program will use the description value instead of the name as mentioned.

@@ -21,6 +21,7 @@ namespace LANMonitor
     {
         bool BalloonVisible = false;
         bool ContextMenuVisible = false;
+        bool StopWorker = false;
         public LANMonitorForm()
         {
             InitializeComponent();
@@ -78,12 +79,15 @@ namespace LANMonitor
 
         private void LANMonitorForm_Load(object sender, EventArgs e)
         {
-            LMStatusText.Text = "Scanning the devices for the first time, please wait.";
+            
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            MonitorNetwork(); // Monitor network for devices and handle them.
+            if (!StopWorker)
+            {
+                MonitorNetwork(); // Monitor network for devices and handle them.
+            }
         }
 
         private void RefreshDevicesTimer_Tick(object sender, EventArgs e) // Refresh devices information by calling MonitorNetwork with the default or specified value.
@@ -121,9 +125,9 @@ namespace LANMonitor
                         LANDevicesList.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
                     if ((bool)LANDevicesList.Rows[e.RowIndex].Cells["Notify"].Value == true)
-                        ExcludedList = ExcludedList.Replace(LANDevicesList.Rows[e.RowIndex].Cells["Host"].Value + ";", "");
+                        ExcludedList = ExcludedList.Replace(LANDevicesList.Rows[e.RowIndex].Cells["MAC"].Value + ";", "");
                     else
-                        ExcludedList += LANDevicesList.Rows[e.RowIndex].Cells["Host"].Value + ";";
+                        ExcludedList += LANDevicesList.Rows[e.RowIndex].Cells["MAC"].Value + ";";
                 }
             }
         }
@@ -171,7 +175,12 @@ namespace LANMonitor
             SettingsWindow.RefreshTime = RefreshTime;
             SettingsWindow.ScanLimit = ScanLimit;
             SettingsWindow.ShowDialog();
-            SelectedInterfaceName = SettingsWindow.SelectedInterfaceName;
+            if (SettingsWindow.SelectedInterfaceName != SelectedInterfaceName)
+            {
+                StopWorker = true;
+                SelectedInterfaceName = SettingsWindow.SelectedInterfaceName;
+            }
+
             RefreshTime = SettingsWindow.RefreshTime;
             ScanLimit = SettingsWindow.ScanLimit;
             RefreshDevicesTimer.Interval = RefreshTime;
@@ -293,6 +302,16 @@ namespace LANMonitor
         private void LANMonitorStausMenu_Closing(object sender, ToolStripDropDownClosingEventArgs e) // Allow connected devices notification to be displayed after closing the contextmenu.
         {
             ContextMenuVisible = false;
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (StopWorker) // I let the worker finish instead of cancelling using StopWorker as an enabler.
+            {
+                SelectInterface();
+                ClearDevices = true;
+                StopWorker = false;
+            }
         }
     }
 }

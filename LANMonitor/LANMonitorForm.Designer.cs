@@ -29,21 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LANMonitorForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LANDevicesList = new System.Windows.Forms.DataGridView();
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Host = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstSeen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastSeen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notify = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.LANMonitorNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.LANMonitorStausMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,15 +71,6 @@
             this.MenuToolsSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Host = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstSeen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastSeen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notify = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LANDevicesList)).BeginInit();
             this.LANMonitorStausMenu.SuspendLayout();
             this.LMStatusbar.SuspendLayout();
@@ -83,9 +83,9 @@
             this.LANDevicesList.AllowUserToDeleteRows = false;
             this.LANDevicesList.AllowUserToOrderColumns = true;
             this.LANDevicesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LANDevicesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LANDevicesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.LANDevicesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -94,14 +94,14 @@
             this.LANDevicesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LANDevicesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.LANDevicesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LANDevicesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LANDevicesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.LANDevicesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LANDevicesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IP,
@@ -113,29 +113,29 @@
             this.Vendor,
             this.Status,
             this.Notify});
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LANDevicesList.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LANDevicesList.DefaultCellStyle = dataGridViewCellStyle11;
             this.LANDevicesList.Location = new System.Drawing.Point(12, 27);
             this.LANDevicesList.MultiSelect = false;
             this.LANDevicesList.Name = "LANDevicesList";
             this.LANDevicesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LANDevicesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LANDevicesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.LANDevicesList.RowHeadersVisible = false;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.LANDevicesList.RowsDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.LANDevicesList.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.LANDevicesList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.LANDevicesList.RowTemplate.DividerHeight = 1;
             this.LANDevicesList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -148,6 +148,101 @@
             this.LANDevicesList.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.LANDevicesList_SortCompare);
             this.LANDevicesList.Sorted += new System.EventHandler(this.LANDevicesList_Sorted);
             this.LANDevicesList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LANDevicesList_MouseUp);
+            // 
+            // IP
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.IP.DefaultCellStyle = dataGridViewCellStyle3;
+            this.IP.DividerWidth = 1;
+            this.IP.HeaderText = "   IP";
+            this.IP.MinimumWidth = 100;
+            this.IP.Name = "IP";
+            this.IP.ReadOnly = true;
+            // 
+            // Host
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Host.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Host.DividerWidth = 1;
+            this.Host.FillWeight = 153F;
+            this.Host.HeaderText = "   Host";
+            this.Host.MinimumWidth = 153;
+            this.Host.Name = "Host";
+            this.Host.ReadOnly = true;
+            // 
+            // MAC
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MAC.DefaultCellStyle = dataGridViewCellStyle5;
+            this.MAC.DividerWidth = 1;
+            this.MAC.FillWeight = 123F;
+            this.MAC.HeaderText = "   MAC";
+            this.MAC.MinimumWidth = 123;
+            this.MAC.Name = "MAC";
+            this.MAC.ReadOnly = true;
+            // 
+            // FirstSeen
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FirstSeen.DefaultCellStyle = dataGridViewCellStyle6;
+            this.FirstSeen.DividerWidth = 1;
+            this.FirstSeen.FillWeight = 122F;
+            this.FirstSeen.HeaderText = "   First Seen";
+            this.FirstSeen.MinimumWidth = 122;
+            this.FirstSeen.Name = "FirstSeen";
+            this.FirstSeen.ReadOnly = true;
+            // 
+            // LastSeen
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.LastSeen.DefaultCellStyle = dataGridViewCellStyle7;
+            this.LastSeen.DividerWidth = 1;
+            this.LastSeen.FillWeight = 123F;
+            this.LastSeen.HeaderText = "   Last Seen";
+            this.LastSeen.MinimumWidth = 123;
+            this.LastSeen.Name = "LastSeen";
+            this.LastSeen.ReadOnly = true;
+            // 
+            // Description
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Description.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Description.DividerWidth = 1;
+            this.Description.FillWeight = 102F;
+            this.Description.HeaderText = "    Description";
+            this.Description.MinimumWidth = 102;
+            this.Description.Name = "Description";
+            // 
+            // Vendor
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Vendor.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Vendor.DividerWidth = 1;
+            this.Vendor.FillWeight = 180F;
+            this.Vendor.HeaderText = "   Interface Vendor";
+            this.Vendor.MinimumWidth = 180;
+            this.Vendor.Name = "Vendor";
+            this.Vendor.ReadOnly = true;
+            // 
+            // Status
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Status.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Status.DividerWidth = 1;
+            this.Status.FillWeight = 102F;
+            this.Status.HeaderText = "    Status";
+            this.Status.MinimumWidth = 102;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Notify
+            // 
+            this.Notify.FillWeight = 30F;
+            this.Notify.HeaderText = "*";
+            this.Notify.MinimumWidth = 30;
+            this.Notify.Name = "Notify";
+            this.Notify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Notify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // LANMonitorNotify
             // 
@@ -188,12 +283,13 @@
             // BackgroundWorker
             // 
             this.BackgroundWorker.WorkerReportsProgress = true;
+            this.BackgroundWorker.WorkerSupportsCancellation = true;
             this.BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
             this.BackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
+            this.BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
             // 
             // RefreshDevicesTimer
             // 
-            this.RefreshDevicesTimer.Enabled = true;
             this.RefreshDevicesTimer.Interval = 1000;
             this.RefreshDevicesTimer.Tick += new System.EventHandler(this.RefreshDevicesTimer_Tick);
             // 
@@ -290,101 +386,6 @@
             this.MenuHelpAbout.Size = new System.Drawing.Size(107, 22);
             this.MenuHelpAbout.Text = "About";
             this.MenuHelpAbout.Click += new System.EventHandler(this.MenuHelpAbout_Click);
-            // 
-            // IP
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.IP.DefaultCellStyle = dataGridViewCellStyle16;
-            this.IP.DividerWidth = 1;
-            this.IP.HeaderText = "   IP";
-            this.IP.MinimumWidth = 100;
-            this.IP.Name = "IP";
-            this.IP.ReadOnly = true;
-            // 
-            // Host
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Host.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Host.DividerWidth = 1;
-            this.Host.FillWeight = 153F;
-            this.Host.HeaderText = "   Host";
-            this.Host.MinimumWidth = 153;
-            this.Host.Name = "Host";
-            this.Host.ReadOnly = true;
-            // 
-            // MAC
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MAC.DefaultCellStyle = dataGridViewCellStyle18;
-            this.MAC.DividerWidth = 1;
-            this.MAC.FillWeight = 123F;
-            this.MAC.HeaderText = "   MAC";
-            this.MAC.MinimumWidth = 123;
-            this.MAC.Name = "MAC";
-            this.MAC.ReadOnly = true;
-            // 
-            // FirstSeen
-            // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FirstSeen.DefaultCellStyle = dataGridViewCellStyle19;
-            this.FirstSeen.DividerWidth = 1;
-            this.FirstSeen.FillWeight = 122F;
-            this.FirstSeen.HeaderText = "   First Seen";
-            this.FirstSeen.MinimumWidth = 122;
-            this.FirstSeen.Name = "FirstSeen";
-            this.FirstSeen.ReadOnly = true;
-            // 
-            // LastSeen
-            // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.LastSeen.DefaultCellStyle = dataGridViewCellStyle20;
-            this.LastSeen.DividerWidth = 1;
-            this.LastSeen.FillWeight = 123F;
-            this.LastSeen.HeaderText = "   Last Seen";
-            this.LastSeen.MinimumWidth = 123;
-            this.LastSeen.Name = "LastSeen";
-            this.LastSeen.ReadOnly = true;
-            // 
-            // Description
-            // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Description.DefaultCellStyle = dataGridViewCellStyle21;
-            this.Description.DividerWidth = 1;
-            this.Description.FillWeight = 102F;
-            this.Description.HeaderText = "    Description";
-            this.Description.MinimumWidth = 102;
-            this.Description.Name = "Description";
-            // 
-            // Vendor
-            // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Vendor.DefaultCellStyle = dataGridViewCellStyle22;
-            this.Vendor.DividerWidth = 1;
-            this.Vendor.FillWeight = 180F;
-            this.Vendor.HeaderText = "   Interface Vendor";
-            this.Vendor.MinimumWidth = 180;
-            this.Vendor.Name = "Vendor";
-            this.Vendor.ReadOnly = true;
-            // 
-            // Status
-            // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Status.DefaultCellStyle = dataGridViewCellStyle23;
-            this.Status.DividerWidth = 1;
-            this.Status.FillWeight = 102F;
-            this.Status.HeaderText = "    Status";
-            this.Status.MinimumWidth = 102;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Notify
-            // 
-            this.Notify.FillWeight = 30F;
-            this.Notify.HeaderText = "*";
-            this.Notify.MinimumWidth = 30;
-            this.Notify.Name = "Notify";
-            this.Notify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Notify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // LANMonitorForm
             // 

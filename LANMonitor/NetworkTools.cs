@@ -32,7 +32,7 @@ namespace LANMonitor
         string ExcludedList = "";
         string ColumnOrder = "";
         string InterfacesString = "";
-        string SelectedInterfaceName = "Local Area Connection";
+        string SelectedInterfaceName;
         int ScanLimit = 254;
         int RefreshTime = 1;
         bool FirstRun = true;
@@ -46,7 +46,7 @@ namespace LANMonitor
             public IPAddress IP;
             public long BaseIP;
             public string MAC;
-            public string Name;
+            public string DeviceName;
             public int InterfaceCapacity; // Note for later.
         }
 
@@ -57,20 +57,35 @@ namespace LANMonitor
 
         public void SelectInterface() // Select network interface.
         {
-            if (Interfaces.Count > 0)
+            if (Interfaces.Count > 0) // If we find an interface continue. If that is not the case, skip scanning of devices and ask the user to connect an interface then restart.
             {
-                if (SelectedInterfaceName == "Local Area Connection")
-                    SelectedInterface = Interfaces[InterfacesIndex["Local Area Connection"]];
-                else
+                if (InterfacesIndex.ContainsKey(SelectedInterfaceName)) // The next block is to determine if the interface (name) is available to us, if it is not continue to check for the default interface, and if that is not available simply get the first interface we find.
                     SelectedInterface = Interfaces[InterfacesIndex[SelectedInterfaceName]];
+                else
+                {
+                    if (InterfacesIndex.ContainsKey("Local Area Connection"))
+                    {
+                        SelectedInterface = Interfaces[InterfacesIndex["Local Area Connection"]];
+                        SelectedInterfaceName = "Local Area Connection";
+                    }
+                    else
+                    {
+                        SelectedInterface = Interfaces[0];
+                        SelectedInterfaceName = InterfacesString.Split('|')[0];
+                    }
+                }
+                LMStatusText.Text = "Scanning the devices for the first time, please wait.";
+                RefreshDevicesTimer.Enabled = true;
             }
+            else
+                LMStatusText.Text = "Failed to acquire an active network interface, please enable at least one interface then restart the program.";
         }
 
         public void GetInterfaces() // Get all network interfaces available.
         {
             InterfaceInfo Interface = new InterfaceInfo();
             int counter = 0;
-            IEnumerable<NetworkInterface> nics = (NetworkInterface.GetAllNetworkInterfaces().Where(network => network.NetworkInterfaceType == NetworkInterfaceType.Ethernet && network.OperationalStatus == OperationalStatus.Up));
+            IEnumerable<NetworkInterface> nics = (NetworkInterface.GetAllNetworkInterfaces().Where(network => (network.NetworkInterfaceType == NetworkInterfaceType.Ethernet || network.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) && network.OperationalStatus == OperationalStatus.Up));
             foreach (NetworkInterface ni in nics)
             {
                 foreach (UnicastIPAddressInformation uipi in ni.GetIPProperties().UnicastAddresses)
@@ -87,7 +102,7 @@ namespace LANMonitor
                             Interface.BaseIP = (long)BitConverter.ToInt32(IPAddress.Parse(StartIP).GetAddressBytes(), 0);
                             Interface.InterfaceCapacity = 254 - int.Parse(NetmaskParts[3]); // Later.
                             Interface.MAC = string.Join("-", (from z in ni.GetPhysicalAddress().GetAddressBytes() select z.ToString("X2")).ToArray());
-                            Interface.Name = Dns.GetHostName();
+                            Interface.DeviceName = Dns.GetHostName();
 
                             Interfaces.Add(Interface);
                             InterfacesString += ni.Name + "|" + uipi.Address + ";";
@@ -176,14 +191,14 @@ namespace LANMonitor
                         Hostnames.Add(device.Key, value[1]);
                         counter++;
                     }
-                    if (!ExcludedList.Contains(value[1] + ";"))
+                    if (!ExcludedList.Contains(value[2] + ";"))
                         connected += "'" + (Descriptions[device.Key] != "" ? Descriptions[device.Key] : Hostnames[device.Key]) + "' ";
                 }
                 foreach (KeyValuePair<string, string> device in justdisconnected)
                 {
                     value = device.Value.Split(';');
                     LANDevicesList.Rows[GVList[device.Key]].Cells["Status"].Value = "Offline";
-                    if (!ExcludedList.Contains(value[1] + ";"))
+                    if (!ExcludedList.Contains(value[2] + ";"))
                         disconnected += "'" + (Descriptions[device.Key] != "" ? Descriptions[device.Key] : Hostnames[device.Key]) + "' ";
                 }
             }
@@ -215,15 +230,15 @@ namespace LANMonitor
             foreach (KeyValuePair<string, string> device in macc)
             {
                 value =  device.Value.Split(';');
-                LANDevicesList.Rows.Add(value[0], value[1], value[2], FirstSeenList[device.Key], LastSeenList[device.Key], Descriptions[device.Key], Vendors[device.Key], value[3], !ExcludedList.Contains(value[1] + ";"));
+                LANDevicesList.Rows.Add(value[0], value[1], value[2], FirstSeenList[device.Key], LastSeenList[device.Key], Descriptions[device.Key], Vendors[device.Key], value[3], !ExcludedList.Contains(value[2] + ";"));
                 GVList.Add(device.Key, counter);
                 Hostnames.Add(device.Key, value[1]);
                 counter++;
             }
 
-            LANDevicesList.Rows.Add(SelectedInterface.IP.ToString(), SelectedInterface.Name, SelectedInterface.MAC, now, now, "My PC",GetVendor(SelectedInterface.MAC), "Online", false); // This segment is used to manually insert your computer as entry to the list. 
+            LANDevicesList.Rows.Add(SelectedInterface.IP.ToString(), SelectedInterface.DeviceName, SelectedInterface.MAC, now, now, "My PC", GetVendor(SelectedInterface.MAC), "Online", false); // This segment is used to manually insert your computer as entry to the list. 
             GVList.Add(SelectedInterface.MAC, counter);
-            Hostnames.Add(SelectedInterface.MAC, SelectedInterface.Name);
+            Hostnames.Add(SelectedInterface.MAC, SelectedInterface.DeviceName);
 
 
             LANDevicesList.ClearSelection();
