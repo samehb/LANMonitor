@@ -1,4 +1,7 @@
 # LANMonitor
+
+![LANMonitor](http://i.imgur.com/T1pXZg8.png)
+
 ## Introduction
 LANMonitor is a project that allows you to detect the devices (computers, phones, tablets, etc.) connected to your local network. It provides detailed information which can be used to indentify them such as names (if possible), MAC addresses, and vendors. It can also be used as a network diagnostic tool to monitor the connectivity of devices.
 
@@ -43,4 +46,5 @@ Read file [LICENSE](LICENSE)
 ## Links
 
 [Blog](http://sres.tumblr.com)
+
 [Project Information](http://sres.tumblr.com/post/146297641963/lanmonitor-detect-users-on-your-local-network)
