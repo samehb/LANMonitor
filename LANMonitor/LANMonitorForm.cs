@@ -252,7 +252,7 @@ namespace LANMonitor
 
         private void LANDevicesList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) // Handle coloring for Status column cell values.
         {
-            if (LANDevicesList.Rows[e.RowIndex].Cells[7].Value != null && !string.IsNullOrWhiteSpace(LANDevicesList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) && LANDevicesList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Online")
+            if (LANDevicesList.Rows[e.RowIndex].Cells[7].Value != null && !string.IsNullOrWhiteSpace(LANDevicesList.Rows[e.RowIndex].Cells[7].Value.ToString()) && LANDevicesList.Rows[e.RowIndex].Cells[7].Value.ToString() == "Online")
             {
                 LANDevicesList.Rows[e.RowIndex].Cells[7].Style = new DataGridViewCellStyle { ForeColor = Color.Green };
             }
